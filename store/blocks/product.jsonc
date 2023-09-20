@@ -1,48 +1,70 @@
+//product.jsonc
 {
   "store.product": {
     "children": [
-      "breadcrumb",
-      "flex-layout.row#main"
+      "flex-layout.row#product-breadcrumb",
+      "flex-layout.row#product-main"
     ]
   },
-  "flex-layout.row#main": {
+  "flex-layout.row#product-breadcrumb": {
     "props": {
-      "marginTop": 6
+      "marginTop": 20
     },
-    "children": [
-      "flex-layout.col#left",
-      "flex-layout.col#right"
-    ]
+    "children": ["breadcrumb"]
   },
-  "flex-layout.col#left": {
-    "children": [
-      "product-images"
-    ]
+  "flex-layout.row#product-main": {
+    "props": {
+      "colGap": 9,
+      "rowGap": 7,
+      "marginTop": 4,
+      "marginBottom": 7,
+      "paddingTop": 7,
+      "paddingBottom": 7,
+      "blockClass": "product-main"
+    },
+    "children": ["product-images", "flex-layout.col#right-col"]
   },
-  "flex-layout.col#right": {
+  "product-images": {
+    "props": {
+      "displayThumbnailsArrows": true,
+      "thumbnailsOrientation": "vertical"
+    }
+  },
+  "flex-layout.col#right-col": {
     "props": {
       "preventVerticalStretch": true,
-      "verticalAlign": "middle"
+      "rowGap": 0
     },
     "children": [
       "product-name",
-      "product-identifier.product",
-      "product-price",
-      "flex-layout.row#qty-sku",
-      "buy-button"
-    ]
-  },
-  "flex-layout.row#qty-sku": {
-    "children": [
+      "product-price#product-details",
       "sku-selector",
-      "product-quantity",
-      "shipping-simulator"
+      "flex-layout.row#buy-button",
+      "shipping-simulator",
+      "share#default"
     ]
   },
-  "product-price": {
+  "product-price#product-details": {
     "props": {
-      "showSavings": true,
-      "showListPrice": true
+      "showInstallments": true,
+      "showSavings": true
+    }
+  },
+  "flex-layout.row#buy-button": {
+    "props": {
+      "marginTop": 4,
+      "marginBottom": 7
+    },
+    "children": ["buy-button"]
+  },
+  "share#default": {
+    "props": {
+      "social": {
+        "Facebook": true,
+        "WhatsApp": true,
+        "Twitter": false,
+        "Pinterest": true
+      }
     }
   }
 }
